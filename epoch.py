@@ -5,6 +5,7 @@ import re
 import subprocess
 import sys
 import time
+import pytz
 from workflow import Workflow, ICON_CLOCK, ICON_NOTE
 
 reload(sys)
@@ -41,9 +42,8 @@ def add_epoch_to_time_conversion(wf, timestamp, descriptor, converter):
         LOGGER.debug('Returning [{converted}] as [{description}] for [{timestamp}]'.format(**locals()))
         wf.add_item(title=converted, subtitle=description, arg=converted, valid=True, icon=ICON_CLOCK)
 
-
-def add_time_to_epoch_conversion(wf, dt, descriptor, converter, multiplier):
-    converted = str(int((dt - converter(0)).total_seconds() * multiplier))
+def add_time_to_epoch_conversion(wf, dt, descriptor, epoch, multiplier):
+    converted = str(int((dt - epoch).total_seconds() * multiplier))
     description = descriptor + ' epoch for ' + str(dt)
     wf.add_item(title=converted, subtitle=description, arg=converted, valid=True, icon=ICON_CLOCK)
 
@@ -65,13 +65,16 @@ def attempt_conversions(wf, input, prefix=''):
                 ('.000000' if subseconds is None else subseconds[:7]),
                 '%Y-%m-%d %H:%M:%S.%f'
             )
+            dt_utc = pytz.utc.localize(dt)
+            dt_local = pytz.timezone('Asia/Singapore').localize(dt)
+            epoch = datetime.datetime.fromtimestamp(0, tz=pytz.utc)
 
-            add_time_to_epoch_conversion(wf, dt, '{prefix}Local s.'.format(**locals()), datetime.datetime.fromtimestamp, 1)
-            add_time_to_epoch_conversion(wf, dt, '{prefix}Local ms.'.format(**locals()), datetime.datetime.fromtimestamp, 1e3)
+            add_time_to_epoch_conversion(wf, dt_local, '{prefix}Local s'.format(**locals()), epoch, 1)
+            add_time_to_epoch_conversion(wf, dt_local, '{prefix}Local ms'.format(**locals()), epoch, 1e3)
 
-            add_time_to_epoch_conversion(wf, dt, '{prefix}UTC s.'.format(**locals()), datetime.datetime.utcfromtimestamp, 1)
-            add_time_to_epoch_conversion(wf, dt, '{prefix}UTC ms.'.format(**locals()), datetime.datetime.utcfromtimestamp, 1e3)
-    except:
+            add_time_to_epoch_conversion(wf, dt_utc, '{prefix}UTC s'.format(**locals()), epoch, 1)
+            add_time_to_epoch_conversion(wf, dt_utc, '{prefix}UTC ms'.format(**locals()), epoch, 1e3)
+    except Exception as e:
         LOGGER.debug('Unable to read [{input}] as a human-readable datetime'.format(**locals()))
 
 
