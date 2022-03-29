@@ -3,16 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>snooze92.epoch.converter</string>
+	<string>com.teosiyan.epochconverter</string>
 	<key>category</key>
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>84A7FB97-8BB7-459D-BC8D-81F919E0B448</key>
+		<key>49E227E2-C0A4-48F3-A7EC-300523D48CB4</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>14ADF12A-3111-4EBB-BA77-E196F0FCC87D</string>
+				<string>45D0A6B1-2CE3-4DBA-B0BB-B38D39BDD060</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -22,7 +22,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>FDC91150-5C5D-45B3-BECB-23F0490DCBB7</string>
+				<string>F60B9202-D1DA-4653-9171-EDC5AB26C547</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -33,15 +33,34 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>Julien "Snooze92" Lehuen</string>
+	<string>Teo Si-Yan</string>
 	<key>description</key>
-	<string>Make timestamps human-readable</string>
+	<string></string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Epoch Converter</string>
+	<string>Epoch Converter Singapore</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>45D0A6B1-2CE3-4DBA-B0BB-B38D39BDD060</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -49,6 +68,8 @@
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -56,7 +77,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>ts</string>
+				<string>ec</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -85,26 +106,9 @@
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>84A7FB97-8BB7-459D-BC8D-81F919E0B448</string>
+			<string>49E227E2-C0A4-48F3-A7EC-300523D48CB4</string>
 			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>14ADF12A-3111-4EBB-BA77-E196F0FCC87D</string>
-			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -123,7 +127,7 @@
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>FDC91150-5C5D-45B3-BECB-23F0490DCBB7</string>
+			<string>F60B9202-D1DA-4653-9171-EDC5AB26C547</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -132,29 +136,29 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>14ADF12A-3111-4EBB-BA77-E196F0FCC87D</key>
+		<key>45D0A6B1-2CE3-4DBA-B0BB-B38D39BDD060</key>
 		<dict>
 			<key>xpos</key>
-			<integer>290</integer>
+			<integer>280</integer>
 			<key>ypos</key>
-			<integer>20</integer>
+			<integer>35</integer>
 		</dict>
-		<key>84A7FB97-8BB7-459D-BC8D-81F919E0B448</key>
+		<key>49E227E2-C0A4-48F3-A7EC-300523D48CB4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>20</integer>
+			<integer>10</integer>
 			<key>ypos</key>
-			<integer>20</integer>
+			<integer>35</integer>
 		</dict>
-		<key>FDC91150-5C5D-45B3-BECB-23F0490DCBB7</key>
+		<key>F60B9202-D1DA-4653-9171-EDC5AB26C547</key>
 		<dict>
 			<key>xpos</key>
-			<integer>290</integer>
+			<integer>280</integer>
 			<key>ypos</key>
-			<integer>140</integer>
+			<integer>155</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string>https://github.com/snooze92</string>
+	<string>https://github.com/siyant/alfred-epoch-converter-sg-fix</string>
 </dict>
 </plist>
